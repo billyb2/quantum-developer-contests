@@ -1,0 +1,30 @@
+<script>
+var number1 = Number(prompt("First Number"));
+var number2 = Number(prompt('Second Number'));
+
+//Number of negative numbers
+var numOfNegs = 0;
+
+var answer = 0;
+
+if(number1 < 0){
+	numOfNegs ++;
+    number1 = Math.abs(number1);
+}
+
+if(number2 < 0){
+	numOfNegs ++;
+    number2 = Math.abs(number2);
+}
+
+for(var i = 0; i < number2; i++){
+	answer += number1;
+}
+
+if(numOfNegs == 1){
+	answer = -answer;
+}
+
+
+alert(answer);
+</script>
