@@ -1,30 +1,53 @@
 <script>
+//Ask the the user for the two numbers
 var number1 = Number(prompt("First Number"));
 var number2 = Number(prompt('Second Number'));
 
 //Number of negative numbers
 var numOfNegs = 0;
 
+//The final answer
 var answer = 0;
 
-if(number1 < 0){
-	numOfNegs ++;
-    number1 = Math.abs(number1);
+//If either number is equal to zero, just return 0
+if (number1 !== 0 && number2 !== 0) {
+	//Counts the number of negative numbers, basically
+    if (number1 < 0) {
+        numOfNegs++;
+        number1 = Math.abs(number1);
+    }
+
+    if (number2 < 0) {
+        numOfNegs++;
+        number2 = Math.abs(number2);
+    }
+    
+    //Small effiency boost I noticed, add the larger number less amount of times
+    if (number1 > number2){
+
+      for (var i = 0; i < number2; i++) {
+          answer += number1;
+      }
+
+		//If there's 1 negative, then take the negative of the answer. If not it'll be positive anyway
+      if (numOfNegs == 1) {
+          answer = -answer;
+      }
+    } else {
+      for (var i = 0; i < number1; i++) {
+          answer += number2;
+      }
+
+      if (numOfNegs == 1) {
+          answer = -answer;
+      }
+        
+        
+    }
+} else {
+	//If either number is 0, just return 0
+    answer = 0;
 }
 
-if(number2 < 0){
-	numOfNegs ++;
-    number2 = Math.abs(number2);
-}
-
-for(var i = 0; i < number2; i++){
-	answer += number1;
-}
-
-if(numOfNegs == 1){
-	answer = -answer;
-}
-
-
-alert(answer);
+    alert(answer);
 </script>
